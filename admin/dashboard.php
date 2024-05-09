@@ -430,7 +430,11 @@ if(isset($_GET['success'])){
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
-          <li><a href="auth/logout.php" class="btn btn-sm btn-primary"  class = "float-end" role = "button">Logout</a></li>
+          <div class="container">
+            <div class="d-flex float-end">
+              <button type="button" class="btn btn-sm btn-primary">Log out</button>
+            </div>
+          </div>
         </ol>
       </nav>
     </div><!-- End Page Title -->
