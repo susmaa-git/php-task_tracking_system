@@ -8,7 +8,7 @@ if(isset($_POST['login'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if($username == "" && $password ==""){
+    if($username == "" || $password ==""){
         header('Location:../index.php?required = All fields are required');
         header('refresh:2;URL = index.php');
     }
@@ -20,9 +20,10 @@ if(isset($_POST['login'])){
             $_SESSION['id'] = $data['id'];
             $_SESSION['username'] = $data['username'];
             $_SESSION['email'] = $data['email'];
+            $_SESSION['name'] = $data['name'];
+            $_SESSION['role'] = $data['role'];
 
-
-            header('Location:../dashboard.php?success = Login successful');
+             header('Location:../dashboard.php?success = Login successful');
         }
         else{
             header('Location:../index.php?invalid = Invalid email');

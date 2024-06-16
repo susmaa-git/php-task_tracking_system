@@ -34,7 +34,7 @@
                     </th>
                     <th>Email</th>
                     <th>Username>
-                    <th>Password</th>
+                    <th>Roles</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -50,13 +50,25 @@
                     <td><?php echo $data['name']?></td>
                     <td><?php echo $data['email']?></td>
                     <td><?php echo $data['username']?></td>
-                    <td><?php echo $data['password']?></td>
                     <td>
-                      <a class="btn btn-sm btn-primary" role = "button" href="edit.php?id=<?php echo $data['id']?>;">Edit</a>
-                      <a class="btn btn-sm btn-primary" role = "button" href="view.php?id=<?php echo $data['id'];?>">Edit</a>
+                    <?php 
+                    if ($data['role'] == "0"){
+                      echo "Normal User";
+                    }
+                    elseif($data['role'] = "1"){
+                      echo "Admin";
+                    }
+                    else{
+                      echo "Invalid user";
+                    }
+                    
+                    ?>
+                    </td>
+                    <td>
+                      <a class="btn btn-sm btn-primary" role = "button" href="edit.php?id=<?php echo $data['id'];?>">Edit</a>
+                      <a class="btn btn-sm btn-primary" role = "button" href="view.php?id=<?php echo $data['id'];?>">view</a>
                       <a class="btn btn-info btn-sm " href="delete.php?id=<?php echo $data['id']; ?>" onclick="return confirm('Do you want to delete')"      role="button">Delete </a>
 
-                      <a class="btn btn-sm btn-primary" role = "button" href="delete.php?id=<?php echo $data['id'];?>">Edit</a>
                     </td>
                   </tr>
 
@@ -80,7 +92,7 @@
             </div>
           </div>
 
-        </div>
+        </div>)
       </div>
     </section>
 

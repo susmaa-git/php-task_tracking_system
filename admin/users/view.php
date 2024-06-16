@@ -34,7 +34,7 @@ if(isset($_GET['id'])){
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputpassword" class="form-label">password:</label>
-                    <input type="password" class="form-control" id="exampleInputpassword"     value="<?php echo $data['password']?>" aria-describedby="emailHelp">
+                    <input type="password" class="form-control" id="exampleInputpassword"     value="<?php echo $data['pass']?>" aria-describedby="emailHelp">
                   </div>
                   <div class="mb-3">
                     <button type="submit" class="btn btn-sm btn-primary" name = "edit">Add user</button>

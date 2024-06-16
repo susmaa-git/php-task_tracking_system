@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pass` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `role` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` int(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -66,6 +66,20 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 COMMIT;
 
+
+-- User_Tasks junction table
+DROP TABLE IF EXISTS `user_tasks`;
+CREATE TABLE `user_tasks` (
+    `user_id` INT,
+    `task_id` INT,
+    `status` int NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`user_id`, `task_id`),
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY (`task_id`) REFERENCES `tasks`(`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+COMMIT;
 
 DROP TABLE IF EXISTS `taskboard`;
 CREATE TABLE IF NOT EXISTS `taskboard` (
@@ -115,4 +129,34 @@ CREATE TABLE IF NOT EXISTS `task_label` (
   FOREIGN KEY(`label_id`) REFERENCES  `labels`(`id`)
   
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+COMMIT;
+
+
+DROP TABLE IF EXISTS `files`;
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `img_link` varchar(255) NOT NULL,
+  `type` varchar(5) NOT NULL,
+  `status` int NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+COMMIT;
+
+DROP TABLE IF EXISTS `submit_task`;
+CREATE TABLE IF NOT EXISTS `submit_task` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `description` text NOT NULL,
+  `img_link` varchar(255) NOT NULL,
+    `statuus` int(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` varchar(5) NOT NULL,
+  `status` int NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 COMMIT;

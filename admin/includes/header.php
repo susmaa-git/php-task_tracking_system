@@ -1,4 +1,17 @@
-<?php require('../connection/config.php');?>
+<?php require('../connection/config.php');
+
+session_start();
+
+if (isset($_SESSION['username'])) {
+} else {
+  header('Location:../index.php');
+}
+
+require('../auth/rolemanagement.php');
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +19,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <title>Dashboard - Task Tracking system</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+
+  <!-- Fontawesom -->
+  <script src="https://kit.fontawesome.com/f1510e78f8.js" crossorigin="anonymous"></script>
+
 
   <!-- Favicons -->
   <link href="../assets/img/favicon.png" rel="icon">
@@ -30,13 +47,20 @@
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Updated: Apr 20 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-</head>
+  <!-- include libraries(jQuery, bootstrap) -->
+  <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" />
+  <script type="text/javascript" src="cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<body>
+  <!-- include summernote css/js-->
+  <link href="summernote-bs5.css" rel="stylesheet">
+  <script src="summernote-bs5.js"></script>
+  <script>
+    $('#summernote').summernote({
+      placeholder: 'Hello Bootstrap 5',
+      tabsize: 2,
+      height: 100
+    });
+  </script>
+
+</head>

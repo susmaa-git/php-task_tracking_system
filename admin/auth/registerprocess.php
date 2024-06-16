@@ -6,13 +6,13 @@ if(isset($_POST['register'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
     if($name != "" && $email != "" && $username!= "" && $password!= ""){
-        $select = "SELECT * FROM users WHERE email = '$email'";
+        $select = "SELECT * FROM users WHERE username = '$username'";
         $get_select = mysqli_query($conn,$select);
         if($get_select->num_rows> 0){
             header('Location:../register.php?exist = Email already exist');
         }
         else{
-            $insert = "INSERT INTO users(name, email, username, password)VALUES('$name','$email','$username','$password')";
+            $insert = "INSERT INTO users(name, email, username, pass)VALUES('$name','$email','$username','$password')";
             $get_insert = mysqli_query($conn,$insert);
             if($get_insert){
                 header('Location:../index.php?success = Registration successful');

@@ -7,12 +7,12 @@ $db = "tts";
 
 $conn =mysqli_connect($host,$user,$password,$db);
 
-if($conn){
-    echo "Database connection successful";
-}
-else{
-    echo "Database connection failde";
-}
+// if($conn){
+//     echo "Database connection successful";
+// }
+// else{
+//     echo "Database connection failde";
+// }
 
 
 
