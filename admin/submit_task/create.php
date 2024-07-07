@@ -6,7 +6,7 @@
 <section class="py-5">
     <div class="container w-50 py-5">
         <h4>Add File</h4>
-        <a name="" id="" class="btn btn-primary" href="index.php" role="button">Manage file</a>
+        <a name="" id="" class="btn btn-primary" href="index.php" role="button">Manage submitted task</a>
 
 
         <?php

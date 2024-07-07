@@ -20,12 +20,12 @@
             $get_select = mysqli_query($conn, $user_select);
         }
 
-        $select = "SELECT id FROM taskboard ";
+        $select = "SELECT id FROM taskboard";
         $get_select = mysqli_query($conn, $select);
-        if ($get_select->num_rows > 0) {
-            $row = $get_select->fetch_assoc();
+        // if ($get_select->num_rows > 0) {
+           $row = mysqli_fetch_assoc($get_select);
             $taskboard_id = $row['id'];
-        }
+        // }
 
         ?>
 
